@@ -9,6 +9,8 @@ services:
       - POSTGRES_DB=sales-course
     ports:
       - 5432:5432
+    networks:
+      - postgres-compose-network  
 
   pgadmin:
     image: dpage/pgadmin4
@@ -17,3 +19,9 @@ services:
       - PGADMIN_DEFAULT_PASSWORD=root
     ports:
       - 5050:80
+    networks:
+      - postgres-compose-network  
+
+networks: 
+  postgres-compose-network:
+    driver: bridge
